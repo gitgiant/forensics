@@ -15,7 +15,7 @@ def output_report(report):
 [P]rint to terminal.
 [O]utput to file.
 [B]ack.""")
-        choice = input("[Q]uit.").lower()
+        choice = input("[Q]uit.\n").lower()
         if choice=='p':
             print(report)
         elif choice == 'o':
@@ -44,7 +44,7 @@ def forensics():
 [R]un Command History.
 [F]ull Report.
 [S]ettings.""")
-            userChoice = input("[Q]uit.").lower()
+            userChoice = input("[Q]uit.\n").lower()
             if userChoice == 'a':
                 report += shimCache.pull_shim_cache()
                 output_report(report)
@@ -61,7 +61,7 @@ def forensics():
                 report += openSaveMRU.pull_open_save_mru()
                 output_report(report)
             elif userChoice == 'r':
-                runMRU.pull_run_mru()
+                report += runMRU.pull_run_mru()
                 output_report(report)
             elif userChoice == 'f':
                 report += shimCache.pull_shim_cache()
