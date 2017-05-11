@@ -24,7 +24,6 @@ def pull_shim_cache():
         stringData = stringData.replace('\\x', '')
         returnStr = "***Application Compatibility Cache***\n"
         f = open("exeList.txt", 'w+')
-        # TODO: use regex
         for start in range(0, len(stringData)):
             # if we have a start of a file path
             if stringData[start:start+2] == 'C:':
