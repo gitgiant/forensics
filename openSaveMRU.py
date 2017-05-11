@@ -23,7 +23,7 @@ def pull_open_save_mru():
         registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
         # open the OpenSavePidlMRU key
         key = winreg.OpenKey(registry, openSaveMruPath)
-        returnStr = str()
+        returnStr = "***Open Save Dialog Most Recently Used***\n"
         # Iterate through all subkeys of OpenSavePidlMRU
         for i in range(0, winreg.QueryInfoKey(key)[0]):
             # Grab Subkey name

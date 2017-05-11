@@ -45,29 +45,32 @@ def forensics():
 [F]ull Report.
 [S]ettings.""")
             userChoice = input("[Q]uit.").lower()
-            if userChoice== 'a':
-                shimCache.pull_shim_cache()
-            elif userChoice== 'b':
-                browserArtifacts.pull_chrome_artifacts()
+            if userChoice == 'a':
+                report += shimCache.pull_shim_cache()
+                output_report(report)
+            elif userChoice == 'b':
+                report += browserArtifacts.pull_chrome_artifacts()
+                output_report(report)
             elif userChoice == 'j':
-                jumpLists.pull_jump_lists()
+                report += jumpLists.pull_jump_lists()
+                output_report(report)
             elif userChoice == 'l':
-                report += "***Last Visited Most Recently Used***\n"
                 report += lastVistiedMRU.pull_last_visited_mru()
                 output_report(report)
             elif userChoice == 'o':
-                report +="***Open Save Dialog Most Recently Used***\n"
-                report +=openSaveMRU.pull_open_save_mru()
+                report += openSaveMRU.pull_open_save_mru()
                 output_report(report)
             elif userChoice == 'r':
                 runMRU.pull_run_mru()
+                output_report(report)
             elif userChoice == 'f':
-                shimCache.pull_shim_cache()
-                browserArtifacts.pull_chrome_artifacts()
-                jumpLists.pull_jump_lists()
-                lastVistiedMRU.pull_last_visited_mru()
-                openSaveMRU.pull_open_save_mru()
-                runMRU.pull_run_mru()
+                report += shimCache.pull_shim_cache()
+                report += browserArtifacts.pull_chrome_artifacts()
+                report += jumpLists.pull_jump_lists()
+                report += lastVistiedMRU.pull_last_visited_mru()
+                report += openSaveMRU.pull_open_save_mru()
+                report += runMRU.pull_run_mru()
+                output_report(report)
             elif userChoice == 'q':
                 exit(0)
             else:

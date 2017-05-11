@@ -11,9 +11,11 @@ def pull_run_mru():
         registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
         # open the OpenSavePidlMRU key
         key = winreg.OpenKey(registry, lastVisitedMRUpath)
+        returnStr = "***Run Command History***\n"
 
         # Iterate through all subkeys of OpenSavePidlMRU
         for i in range(0, winreg.QueryInfoKey(key)[1]):
-            print(winreg.EnumValue(key,i)[1])
+            returnStr += (winreg.EnumValue(key,i)[1] + '\n')
+        return returnStr
     except Exception as e:
         print(e)

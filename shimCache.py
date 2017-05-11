@@ -22,7 +22,7 @@ def pull_shim_cache():
         stringData = stringData.replace('\\x00', '')
         #remove hex character escape
         stringData = stringData.replace('\\x', '')
-        pulledList = []
+        returnStr = "***Application Compatibility Cache***\n"
         f = open("exeList.txt", 'w+')
         # TODO: use regex
         for start in range(0, len(stringData)):
@@ -32,8 +32,9 @@ def pull_shim_cache():
                 for end in range(0, 260):
                     if stringData[start + end: start + end + 4] == '.exe' or stringData[start + end: start + end + 4] == '.EXE':
                         f.write(stringData[start : start + end + 4].replace('\\\\', '\\') + '\n')
-                        pulledList.append(stringData[start : start + end + 4])
+                        returnStr += stringData[start : start + end + 4] + '\n'
                         break
-        return pulledList
+        return returnStr
+
     except Exception as e:
         print(e)

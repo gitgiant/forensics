@@ -23,7 +23,7 @@ def pull_last_visited_mru():
         registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
         # open the OpenSavePidlMRU key
         key = winreg.OpenKey(registry, lastVisitedMRUpath)
-        returnStr = ""
+        returnStr = "***Last Visited Most Recently Used***\n"
         # Iterate through all subkeys of OpenSavePidlMRU
         for i in range(0, winreg.QueryInfoKey(key)[1]):
 
